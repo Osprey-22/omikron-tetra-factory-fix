@@ -73,7 +73,7 @@ Built on community groundwork: stu_pidd_cow's Omikron format documentation and
 Chevluh's Blender importer.
 
 If this patch saved your playthrough, you can support the work here:
-[BUYMEACOFFEE LINK](https://buymeacoffee.com/desperateosprey)
+[BUYMEACOFFEE](https://buymeacoffee.com/desperateosprey)
 
 This patch distributes no copyrighted game data — it is a description of a
 one-byte change plus a script that applies it to files you already own.
