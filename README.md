@@ -25,12 +25,9 @@ lethal-flagged mesh triggers the forced death. The old community folklore
 ## What the patch does
 
 Changes **one byte** in one file:
-
-```
 File:   MESHES\DECORS\STtra03.3DO
 Offset: 0x7C478
 Change: 08 -> 00
-```
 
 This clears the lethal-contact flag on the train mesh. The train still moves,
 animates, and behaves normally — it just can't instantly kill you anymore.
@@ -40,7 +37,17 @@ the same file ships with the GOG release.
 
 ## How to apply
 
-**Option A — patcher script (recommended):**
+**Option A — Windows, nothing to install (recommended):**
+1. Download `patch_train.bat` from the [Releases page](../../releases/latest).
+2. Close the game, double-click the file.
+3. It finds your install (or asks for the folder), verifies the file,
+   creates a backup (`STtra03.3DO.orig`), and changes the single byte.
+
+The .bat is plain text — you can open it in Notepad and read exactly what it
+does before running it. To undo: delete `STtra03.3DO` and rename
+`STtra03.3DO.orig` back.
+
+**Option B — Python script:**
 1. Install Python 3 if you don't have it.
 2. Close the game.
 3. Run: `python patch_train.py "<path to your Omikron folder>"`
@@ -50,7 +57,7 @@ the same file ships with the GOG release.
 
 To undo: `python patch_train.py "<path>" --revert`
 
-**Option B — manual (any hex editor):**
+**Option C — manual (any hex editor):**
 1. Back up `MESHES\DECORS\STtra03.3DO`.
 2. Open it in a hex editor, go to offset `0x7C478`.
 3. Confirm the byte there is `08` and that offset `0x7C484` reads `TTain04`.
@@ -64,11 +71,10 @@ Original file (unpatched), Steam release:
 - SHA-1: 6949628ab5fef1d7da34bba9b47909c44abfacd5
 
 Patched file differs by exactly one byte (offset 0x7C478: 08 -> 00).
-The patcher refuses to write if the file doesn't match the expected layout,
-so it cannot damage a file from a different version.
-
-The patcher refuses to write if the file doesn't match the expected layout, so
-it cannot damage a file from a different version.
+Both patchers refuse to write if the file doesn't match the expected layout,
+so they cannot damage a file from a different version. If you get a
+verification failure, open an issue with your file's size and MD5 — that
+likely means a game version we haven't seen yet.
 
 ## Credits
 
@@ -77,7 +83,7 @@ Built on community groundwork: stu_pidd_cow's Omikron format documentation and
 Chevluh's Blender importer.
 
 If this patch saved your playthrough, you can support the work here:
-[BUYMEACOFFEE](https://buymeacoffee.com/desperateosprey)
+[Buy Me a Coffee](https://buymeacoffee.com/desperateosprey)
 
 This patch distributes no copyrighted game data — it is a description of a
 one-byte change plus a script that applies it to files you already own.
