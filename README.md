@@ -58,10 +58,14 @@ To undo: `python patch_train.py "<path>" --revert`
 
 ## Verification
 
-Original file (unpatched):
-- Size:  <SIZE> bytes
-- MD5:   <MD5>
-- SHA-1: <SHA1>
+Original file (unpatched), Steam release:
+- Size:  562,008 bytes
+- MD5:   90c3726db0ffeaac712d9aae5a139811
+- SHA-1: 6949628ab5fef1d7da34bba9b47909c44abfacd5
+
+Patched file differs by exactly one byte (offset 0x7C478: 08 -> 00).
+The patcher refuses to write if the file doesn't match the expected layout,
+so it cannot damage a file from a different version.
 
 The patcher refuses to write if the file doesn't match the expected layout, so
 it cannot damage a file from a different version.
